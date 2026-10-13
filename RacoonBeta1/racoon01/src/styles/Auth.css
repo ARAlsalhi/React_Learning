@@ -403,88 +403,6 @@
 }
 
 /* =========================================
-   16. AVATAR SELECTION
-========================================= */
-
-.avatar-section {
-  margin-bottom: var(--space-6);
-}
-
-.avatar-section label {
-  display: block;
-
-  margin-bottom: var(--space-3);
-
-  font-size: 14px;
-  font-weight: 500;
-
-  color: var(--ink);
-}
-
-.avatar-options {
-  display: flex;
-
-  align-items: center;
-
-  gap: var(--space-3);
-
-  flex-wrap: wrap;
-}
-
-/* Avatar Button */
-
-.avatar-option {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  width: 65px;
-  height: 65px;
-
-  padding: 5px;
-
-  background: var(--surface);
-
-  border: 2px solid var(--line);
-
-  border-radius: 50%;
-
-  cursor: pointer;
-
-  transition:
-    border-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-/* Avatar Image */
-
-.avatar-option img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  border-radius: 50%;
-}
-
-/* Avatar Hover */
-
-.avatar-option:hover {
-  border-color: var(--accent);
-
-  transform: translateY(-2px);
-}
-
-/* Selected Avatar */
-
-.avatar-option.selected {
-  border-color: var(--primary);
-
-  box-shadow: 0 0 0 3px var(--mint);
-}
-
-/* =========================================
    17. REGISTER BUTTON
 ========================================= */
 
@@ -970,6 +888,33 @@
 /* Auth Navbar */
 
 .auth-navbar {
-  background-color: var(--night);
-  color: var(--on-panel);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  direction: ltr;
+
+  width: 100%;
+  height: 80px;
+  padding: 0 32px;
+
+  background: var(--night);
+}
+
+/* Help - Left */
+/* Help - Left */
+
+.auth-help {
+  color: var(--on-panel-muted);
+  font-size: 14px;
+}
+
+/* Logo - Right */
+
+.auth-logo {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
 }

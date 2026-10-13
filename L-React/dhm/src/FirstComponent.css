@@ -1,0 +1,12 @@
+.AB {
+  background-color: rgb(74, 137, 137);
+  color: rgb(51, 84, 190);
+  padding: 10px;
+}
+.DD {
+  background-color: rgb(255, 4, 4);
+  color: rgb(255, 0, 0);
+  padding: 10px;
+  border-radius: 1 0px;
+  border: solid 10px green;
+}

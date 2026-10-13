@@ -1,0 +1,99 @@
+/* This file for avatar selecting and styleing*/
+
+/* =========================================
+   AVATAR SELECTOR
+========================================= */
+
+/* Section */
+
+.avatarSection {
+  margin-bottom: var(--space-6);
+}
+
+.avatarSection label {
+  display: block;
+  margin-bottom: var(--space-3);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* Avatar List */
+
+.avatarOptions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* Avatar Button */
+
+.avatar {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: inherit;
+}
+
+/* Avatar Image */
+
+.imageBox {
+  position: relative;
+  width: 65px;
+  height: 65px;
+  padding: 4px;
+
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+}
+
+.imageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Selected Avatar */
+
+.avatar:has(.check) .imageBox {
+  border-color: var(--accent);
+  border-width: 3px;
+}
+
+.avatar:has(.check) {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* Check Icon */
+
+.check {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+
+  display: grid;
+  place-items: center;
+
+  width: 20px;
+  height: 20px;
+
+  background: var(--accent);
+  color: var(--on-accent);
+
+  border-radius: 50%;
+}
+
+/* =========================================
+   PROFILE AVATAR
+========================================= */
+
+.profileAvatar {
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+}

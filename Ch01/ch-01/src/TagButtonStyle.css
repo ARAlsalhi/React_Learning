@@ -1,0 +1,13 @@
+.tagbutton {
+  background-color: lightblue;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 25px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+}
+
+.tagbutton:hover {
+  background-color: rgb(223, 131, 10);
+}

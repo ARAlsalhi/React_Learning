@@ -1,9 +1,12 @@
+import "../styles/Auth.css";
+import Mark from "../assets/Mark.png";
+
 export default function AuthNavbar() {
   return (
     <nav className="auth-navbar">
-      <div className="auth-logo">🦝 Racoon</div>
+      <span className="auth-help">مساعدة</span>
 
-      <div className="auth-help">Help</div>
+      <img src={Mark} alt="Raccon Logo" className="auth-Mark" />
     </nav>
   );
 }

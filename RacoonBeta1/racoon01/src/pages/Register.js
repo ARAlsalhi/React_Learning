@@ -6,14 +6,15 @@ import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import { isValidPhoneNumber } from "libphonenumber-js"; // هذه تتحق من ان الرقم تبع كل دوله صحيح
 
+import AvatarSelector from "../components/Avatar/AvatarSelector";
+import { avatars } from "../components/Avatar/avatars";
+
 import AuthNavbar from "../components/AuthNavbar";
 
 import "../styles/Auth.css";
 import viewIcon from "../assets/view.png";
 import hideIcon from "../assets/hide.png";
-import avatar1 from "../assets/avatars/avatar1.png";
-import avatar2 from "../assets/avatars/avatar2.jpg";
-import avatar3 from "../assets/avatars/avatar3.jpg";
+
 // import avatar4 from "../assets/avatars/avatar4.png";
 
 export default function Register() {
@@ -31,7 +32,7 @@ export default function Register() {
 
   const [errors, setErrors] = useState({}); // {} IT just to take multiple errors and show them in the form
   const navigate = useNavigate();
-  const [avatar, setAvatar] = useState(avatar1); // State to hold the selected avatar file
+  const [avatar, setAvatar] = useState(avatars[0].image); // State to hold the selected avatar file
   const [touched, setTouched] = useState({
     name: false,
     username: false,
@@ -39,6 +40,7 @@ export default function Register() {
     phone: false,
     password: false,
     confirmPassword: false,
+    avatar: avatar,
     // Touched here it is an obj store if the user select other filed  مبعنى انه هو اوبجكت وظيفته يخزن هل المتسخدم خرج من الحقل ولا لا للكل عنصر
   }); // this for  هذه اذا كتب اليوزر الايميل وطلع من الحقل يطلع له خطا وقيمته الافتراضيه خطا يعني دامه يكتب لا تطلع له خطا في الانبت تثير ترو اذا طلع من الفيلد
 
@@ -212,47 +214,10 @@ export default function Register() {
               أمامك بضعة أمتار فقط عن الكنز الخفي.. هل أنت مستعد؟
             </p>
 
-            <div className="avatar-section">
-              <label>اختر شخصيتك</label>
-
-              <div className="avatar-options">
-                <button
-                  type="button"
-                  className={
-                    avatar === avatar1
-                      ? "avatar-option selected"
-                      : "avatar-option"
-                  }
-                  onClick={() => setAvatar(avatar1)}
-                >
-                  <img src={avatar1} alt="Avatar 1" />
-                </button>
-
-                <button
-                  type="button"
-                  className={
-                    avatar === avatar2
-                      ? "avatar-option selected"
-                      : "avatar-option"
-                  }
-                  onClick={() => setAvatar(avatar2)}
-                >
-                  <img src={avatar2} alt="Avatar 2" />
-                </button>
-
-                <button
-                  type="button"
-                  className={
-                    avatar === avatar3
-                      ? "avatar-option selected"
-                      : "avatar-option"
-                  }
-                  onClick={() => setAvatar(avatar3)}
-                >
-                  <img src={avatar3} alt="Avatar 3" />
-                </button>
-              </div>
-            </div>
+            <AvatarSelector
+              selectedAvatar={avatar}
+              onSelect={setAvatar}
+            ></AvatarSelector>
 
             <form onSubmit={handleRegister}>
               <div className="form-row">
