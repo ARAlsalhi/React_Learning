@@ -1,0 +1,975 @@
+/* =========================================
+   RAC OON — AUTH PAGES
+========================================= */
+
+/* =========================================
+   1. PAGE
+========================================= */
+
+.register-page {
+  min-height: 100vh;
+
+  background: var(--canvas);
+}
+
+/* =========================================
+   2. MAIN LAYOUT
+========================================= */
+
+.register-layout {
+  display: grid;
+
+  /* left side 30% | Form 70% */
+  grid-template-columns:
+    minmax(0, 4fr)
+    minmax(0, 6fr);
+
+  width: 100%;
+
+  min-height: calc(100vh - 70px);
+
+  direction: ltr;
+
+  align-items: stretch;
+}
+
+/* =========================================
+   REGISTER BANNER — LEFT SIDE
+========================================= */
+
+.register-animation-side {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 0;
+  min-height: 100%;
+
+  padding: 40px 28px;
+
+  background: var(--night);
+
+  overflow: hidden;
+}
+
+/* Banner Content */
+
+.register-banner-content {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 360px;
+
+  margin-bottom: 100px;
+
+  direction: rtl;
+  text-align: right;
+}
+
+/* Banner Title */
+
+.register-banner-content h2 {
+  margin: 0 0 20px;
+
+  color: var(--on-panel);
+
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.2vw, 48px);
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+/* Banner Description */
+
+.register-banner-content p {
+  margin: 0;
+
+  color: var(--on-panel-muted);
+
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.9;
+}
+
+/* Decorative Stripes */
+
+.register-banner-pattern {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 130px;
+
+  background: repeating-linear-gradient(
+    120deg,
+    var(--panel) 0px,
+    var(--panel) 15px,
+    var(--mint) 15px,
+    var(--mint) 27px,
+    var(--panel) 27px,
+    var(--panel) 40px,
+    var(--accent) 40px,
+    var(--accent) 52px
+  );
+}
+/* =========================================
+   4. FORM SIDE — RIGHT
+========================================= */
+
+.register-form-side {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  min-width: 0;
+
+  padding: var(--space-10) 30px;
+
+  background: var(--canvas);
+
+  border-left: 1px solid var(--line);
+
+  direction: rtl;
+}
+
+/* =========================================
+   5. FORM CONTAINER
+========================================= */
+
+.register-box {
+  width: 100%;
+  max-width: 480px;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+  border-radius: 0;
+
+  box-shadow: none;
+}
+
+/* =========================================
+   6. HEADING
+========================================= */
+
+.register-box h1 {
+  margin: 0 0 var(--space-4);
+
+  font-family: var(--font-sans);
+
+  font-size: 36px;
+  line-height: 1.3;
+
+  font-weight: 700;
+
+  color: var(--ink);
+
+  text-align: right;
+}
+
+/* =========================================
+   7. DESCRIPTION
+========================================= */
+
+.register-description {
+  margin: 0 0 var(--space-8);
+
+  font-family: var(--font-sans);
+
+  font-size: 24px;
+  line-height: 32px;
+
+  font-weight: 400;
+
+  color: var(--ink-muted);
+
+  text-align: right;
+}
+
+/* =========================================
+   8. FORM
+========================================= */
+
+.register-form {
+  width: 100%;
+}
+
+/* =========================================
+   9. FORM GROUP
+========================================= */
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  margin-bottom: var(--space-4);
+
+  width: 100%;
+}
+
+/* =========================================
+   10. LABELS
+========================================= */
+
+.form-group label {
+  font-family: var(--font-sans);
+
+  font-size: 14px;
+  line-height: 22px;
+
+  font-weight: 500;
+
+  color: var(--ink);
+
+  text-align: right;
+}
+
+/* =========================================
+   11. INPUTS
+========================================= */
+
+.form-group input {
+  width: 100%;
+  height: 50px;
+
+  padding: 0 var(--space-4);
+
+  font-family: var(--font-sans);
+
+  font-size: 15px;
+
+  color: var(--ink);
+
+  background: var(--surface);
+
+  border: 1px solid var(--line-strong);
+
+  border-radius: var(--radius-sm);
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Placeholder */
+
+.form-group input::placeholder {
+  color: var(--on-panel-muted);
+  opacity: 1;
+}
+
+/* Input Focus */
+
+.form-group input:focus {
+  border-color: var(--accent);
+
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* =========================================
+   12. VALIDATION — ERROR
+========================================= */
+
+/* Red border only */
+
+.form-group input.input-invalid {
+  border-color: var(--danger);
+}
+
+/* Red border when focused */
+
+.form-group input.input-invalid:focus {
+  border-color: var(--danger);
+
+  box-shadow: 0 0 0 3px var(--danger-ring);
+}
+
+/* Error Message */
+
+.input-error {
+  margin: 4px 0 0;
+
+  font-family: var(--font-sans);
+
+  font-size: 13px;
+  line-height: 20px;
+
+  color: var(--danger);
+
+  text-align: right;
+}
+
+/* =========================================
+   13. PASSWORD INPUT
+========================================= */
+
+.password-input {
+  position: relative;
+
+  width: 100%;
+}
+
+/* Password field */
+
+.password-input input {
+  width: 100%;
+
+  padding-right: var(--space-4);
+
+  /* Space for eye icon on left */
+  padding-left: 55px;
+}
+
+/* =========================================
+   14. PASSWORD EYE BUTTON
+========================================= */
+
+.password-input .password-eye {
+  position: absolute;
+
+  left: 10px;
+  right: auto;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+
+  border-radius: var(--radius-sm);
+
+  cursor: pointer;
+
+  z-index: 2;
+}
+
+/* Eye icon image */
+
+.eye-icon {
+  display: block;
+
+  width: 22px;
+  height: 22px;
+
+  object-fit: contain;
+}
+
+/* Eye button hover */
+
+.password-input .password-eye:hover {
+  background: var(--accent-soft);
+}
+
+/* =========================================
+   15. FORM ROW
+========================================= */
+
+.form-row {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: var(--space-4);
+
+  width: 100%;
+}
+
+/* =========================================
+   16. AVATAR SELECTION
+========================================= */
+
+.avatar-section {
+  margin-bottom: var(--space-6);
+}
+
+.avatar-section label {
+  display: block;
+
+  margin-bottom: var(--space-3);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: var(--ink);
+}
+
+.avatar-options {
+  display: flex;
+
+  align-items: center;
+
+  gap: var(--space-3);
+
+  flex-wrap: wrap;
+}
+
+/* Avatar Button */
+
+.avatar-option {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 65px;
+  height: 65px;
+
+  padding: 5px;
+
+  background: var(--surface);
+
+  border: 2px solid var(--line);
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Avatar Image */
+
+.avatar-option img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+}
+
+/* Avatar Hover */
+
+.avatar-option:hover {
+  border-color: var(--accent);
+
+  transform: translateY(-2px);
+}
+
+/* Selected Avatar */
+
+.avatar-option.selected {
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 3px var(--mint);
+}
+
+/* =========================================
+   17. REGISTER BUTTON
+========================================= */
+
+.register-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 52px;
+
+  margin-top: var(--space-6);
+
+  padding: var(--space-3) var(--space-4);
+
+  font-family: var(--font-sans);
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: var(--on-primary);
+
+  background: var(--primary);
+
+  border: none;
+
+  border-radius: var(--radius-sm);
+
+  cursor: pointer;
+
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Register Hover */
+
+.register-button:hover {
+  filter: brightness(0.95);
+}
+
+/* Register Active */
+
+.register-button:active {
+  transform: scale(0.99);
+}
+
+/* =========================================
+   18. AUTH DIVIDER
+========================================= */
+
+.auth-divider {
+  display: flex;
+
+  align-items: center;
+
+  gap: var(--space-4);
+
+  margin: var(--space-6) 0;
+
+  color: var(--ink-muted);
+
+  font-size: 14px;
+}
+
+/* Divider Lines */
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+
+  flex: 1;
+
+  height: 1px;
+
+  background: var(--line);
+}
+
+/* =========================================
+   19. GOOGLE BUTTON
+========================================= */
+
+.google-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--space-3);
+
+  width: 100%;
+  min-height: 50px;
+
+  padding: var(--space-3) var(--space-4);
+
+  background: var(--surface);
+
+  color: var(--ink);
+
+  border: 1px solid var(--line-strong);
+
+  border-radius: var(--radius-sm);
+
+  font-family: var(--font-sans);
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Google Hover */
+
+.google-button:hover {
+  background: var(--accent-soft);
+
+  border-color: var(--accent);
+}
+
+/* Google Icon */
+
+.google-icon {
+  font-size: 22px;
+  font-weight: 700;
+
+  color: #4285f4;
+}
+
+/* =========================================
+   20. LOGIN LINK
+========================================= */
+
+.signin-text {
+  margin: var(--space-6) 0 0;
+
+  font-family: var(--font-sans);
+
+  font-size: 14px;
+
+  color: var(--ink-muted);
+
+  text-align: center;
+}
+
+.signin-text a {
+  margin-right: 4px;
+
+  color: var(--accent-text);
+
+  font-weight: 700;
+}
+
+.signin-text a:hover {
+  color: var(--accent-hover);
+
+  text-decoration: underline;
+}
+
+/* =========================================
+   21. RESPONSIVE — LAPTOP
+========================================= */
+
+@media (max-width: 1200px) {
+  .register-layout {
+    grid-template-columns:
+      minmax(0, 4fr)
+      minmax(0, 6fr);
+  }
+
+  .register-form-side {
+    padding: 32px 24px;
+  }
+
+  .register-box h1 {
+    font-size: 32px;
+  }
+
+  .register-description {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+
+/* =========================================
+   22. RESPONSIVE — TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .register-form-side {
+    padding: 28px 20px;
+  }
+
+  .register-box h1 {
+    font-size: 28px;
+  }
+
+  .register-description {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* =========================================
+   23. RESPONSIVE — MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .register-layout {
+    display: flex;
+
+    flex-direction: column;
+  }
+
+  /* Form first */
+
+  .register-form-side {
+    order: 1;
+
+    width: 100%;
+
+    padding: 32px 20px;
+
+    border-left: none;
+  }
+
+  /* Animation below form */
+
+  .register-animation-side {
+    order: 2;
+
+    width: 100%;
+
+    min-height: 260px;
+  }
+
+  .nfc-animation {
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+  .register-box {
+    max-width: 520px;
+  }
+
+  .register-box h1 {
+    font-size: 28px;
+  }
+
+  .register-description {
+    font-size: 18px;
+    line-height: 28px;
+
+    margin-bottom: var(--space-6);
+  }
+}
+
+/* =========================================
+   24. RESPONSIVE — SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .register-form-side {
+    padding: 24px 16px;
+  }
+
+  .register-box h1 {
+    font-size: 26px;
+  }
+
+  .register-description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .form-group input {
+    height: 48px;
+  }
+
+  .avatar-option {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+/* =========================================
+   PHONE INPUT — RAC OON
+========================================= */
+
+/* Main container */
+.form-group .react-international-phone-input-container {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-width: 0;
+  height: 50px;
+
+  direction: ltr;
+
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Country selector */
+.form-group .react-international-phone-country-selector {
+  display: flex;
+  align-items: center;
+
+  flex: 0 0 auto;
+  height: 100%;
+}
+
+/* Flag button */
+.form-group .react-international-phone-country-selector-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  padding: 0 10px;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  cursor: pointer;
+}
+
+/* Flag hover */
+.form-group .react-international-phone-country-selector-button:hover {
+  background: var(--accent-soft);
+}
+
+/* Fixed dial code */
+.form-group .react-international-phone-dial-code-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  width: auto;
+  min-width: 0;
+  height: 28px;
+
+  padding: 0 14px 0 4px;
+  margin: 0;
+
+  background: transparent;
+
+  border: none;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+
+  box-shadow: none;
+
+  color: var(--ink);
+
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+/* Number input */
+.form-group input.react-international-phone-input {
+  flex: 1 1 0;
+
+  width: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: 100%;
+
+  padding: 0 14px;
+
+  background: transparent;
+
+  color: var(--ink);
+
+  font-family: var(--font-sans);
+  font-size: 16px;
+
+  border: none;
+  border-radius: 0;
+
+  outline: none;
+  box-shadow: none;
+
+  direction: ltr;
+  text-align: left;
+}
+
+/* Placeholder */
+.form-group input.react-international-phone-input::placeholder {
+  color: var(--ink-muted);
+  opacity: 1;
+}
+
+/* Remove inner focus */
+.form-group input.react-international-phone-input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Focus on entire field */
+.form-group .react-international-phone-input-container:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Error state */
+.form-group .react-international-phone-input-container.phone-invalid {
+  border-color: var(--danger);
+}
+
+/* Error focus */
+.form-group
+  .react-international-phone-input-container.phone-invalid:focus-within {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px var(--danger-ring);
+}
+
+/* Country dropdown */
+.react-international-phone-country-selector-dropdown {
+  z-index: 1000;
+
+  font-family: var(--font-sans);
+
+  background: var(--surface);
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+
+  box-shadow: 0 8px 24px rgba(27, 20, 66, 0.12);
+}
+
+/* Dropdown items */
+.react-international-phone-country-selector-dropdown__list-item {
+  font-size: 14px;
+}
+
+/* Dropdown hover */
+.react-international-phone-country-selector-dropdown__list-item:hover {
+  background: var(--accent-soft);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .form-group .react-international-phone-country-selector-button {
+    padding: 0 8px;
+  }
+
+  .form-group .react-international-phone-dial-code-preview {
+    padding: 0 10px 0 4px;
+    font-size: 16px;
+  }
+
+  .form-group input.react-international-phone-input {
+    padding: 0 10px;
+    font-size: 15px;
+  }
+}
+
+/* Auth Navbar */
+
+.auth-navbar {
+  background-color: var(--night);
+  color: var(--on-panel);
+}
